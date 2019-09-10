@@ -1,5 +1,2 @@
-# python-sql-query
+# Hello World
 
-#updated
-
-#test
