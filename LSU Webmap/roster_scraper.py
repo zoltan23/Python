@@ -19,14 +19,16 @@ weights = roster.find_all("div", {"class": "td w8 rostercell_wt hidden-xs"})
 positions = roster.find_all("div", {"class": "tr"})
 
  
+player_data = open("lsu_roster.csv", "w")
+player_data.write("name*city*height*weight*position\n")
+
 for name, city, height, weight, position in zip(names, cities, heights, weights, positions):
     name = name.text
     city = city.text
     height = height.text
     weight = weight.text
     position = position.find("div", {"class": "td w8 rostercell_pos hidden-xs"}).text
-    print(name, city, height, weight, position)
+    player_data.write(name + "*" + city + "*" + height + "*" + weight + "*" + position + "\n")
+    #print(name, city, height, weight, position)
 
-
-
-
+player_data.close()
