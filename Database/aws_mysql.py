@@ -2,10 +2,9 @@ import pandas as pd
 import pymysql
 import aws_credentials as aws
 
-
-
 conn = pymysql.connect(aws.host, user=aws.user,port=aws.port,
-                            passwd=aws.password, db=aws.dbname)
+                             passwd=aws.password, db=aws.dbname)
+
 
 cursorObject = conn.cursor()    
 
