@@ -18,7 +18,6 @@ heights = roster.find_all("div", {"class": "td w8 rostercell_ht hidden-xs"})
 weights = roster.find_all("div", {"class": "td w8 rostercell_wt hidden-xs"})
 positions = roster.find_all("div", {"class": "tr"})
 
- 
 player_data = open("lsu_roster.csv", "w")
 player_data.write("name*city*height*weight*position\n")
 
