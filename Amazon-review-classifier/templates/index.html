@@ -1,0 +1,17 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <form action="{{ url_for('predict')}}" method="post">
+        <p>Insert your Amazon review to see the predicted star rating!!!</p>
+        <textarea name="message" rows="4" cols="50"></textarea>
+        <br />
+        <button type="submit">Predict the rating!</button>
+    </form>
+</body>
+</div>
+
+</html>
