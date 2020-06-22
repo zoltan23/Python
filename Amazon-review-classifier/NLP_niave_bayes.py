@@ -16,6 +16,7 @@ nltk.download('stopwords')
 from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
 corpus = []
+
 for i in range(0, 1000):
     review = re.sub('[^a-zA-Z]', ' ', dataset['Review'][i])
     review = review.lower()
@@ -24,6 +25,21 @@ for i in range(0, 1000):
     review = [ps.stem(word) for word in review if not word in set(stopwords.words('english'))]
     review = ' '.join(review)
     corpus.append(review)
+
+def cleanData(dataStr):
+    review = re.sub('[^a-zA-Z]', ' ', dataStr)
+    review = review.lower()
+    review = review.split()
+    ps = PorterStemmer()
+    review = [ps.stem(word) for word in review if not word in set(stopwords.words('english'))]
+    review = ' '.join(review)
+    corpus.append(review)
+    print('review = ')
+    return review
+
+val = cleanData('That very good restaurant')    
+print('$$$VAL =')
+
 
 # Creating the Bag of Words model
 from sklearn.feature_extraction.text import CountVectorizer
@@ -43,7 +59,8 @@ classifier.fit(X_train, y_train)
 # Predicting the Test set results
 y_pred = classifier.predict(X_test)
 
-
 # Making the Confusion Matrix
-from sklearn.metrics import confusion_matrix
+from sklearn.metrics import confusion_matrix, classification_report
 cm = confusion_matrix(y_test, y_pred)
+report = classification_report(y_test, y_pred)
+#print(report)

@@ -45,5 +45,7 @@ y_pred = classifier.predict(X_test)
 
 
 # Making the Confusion Matrix
-from sklearn.metrics import confusion_matrix
+from sklearn.metrics import confusion_matrix, classification_report
 cm = confusion_matrix(y_test, y_pred)
+report = classification_report(y_test, y_pred)
+print(report)
