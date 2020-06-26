@@ -5,13 +5,15 @@ import pandas as pd
 import pickle
 
 # Importing the df
-df = pd.read_csv('reviews.tsv', delimiter = '\t', quoting = 3)
+df_1 = pd.read_csv('Restaurant_Reviews.tsv', delimiter = '\t', quoting = 3)
+df_2 = pd.read_csv('reviews.tsv', delimiter = '\t', quoting = 3)
 
 # #Reclassify the Amazon ratings into a binary classification
 recode_dict = { 1:0, 2:0, 3:1, 4:1, 5:1 }
-df['Ratings'] = df['Liked'].map(recode_dict)
+df_2['Ratings'] = df_2['Liked'].map(recode_dict)
+df_2.drop()
+df = pd.merge(df_1, df_2)
 
-print(df['Ratings'].count)
 #Clean the data
 from NLP_functions import cleanData
 corpus = cleanData(df['Review'])
