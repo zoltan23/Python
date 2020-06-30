@@ -36,6 +36,8 @@ def mergeRosterWithGeoCoords(filename):
 
 #mergeRosterWithGeoCoords('lsu_roster.csv')
 
+# The following function concatenates all of the college football teams into one
+# main dataset.
 def createMasterDataset():
     frames = []
     for file in os.listdir(dir):
@@ -44,5 +46,5 @@ def createMasterDataset():
     master_df = pd.concat(frames)    
     print(master_df)
 
-createMasterDataset()
+#createMasterDataset()
 
