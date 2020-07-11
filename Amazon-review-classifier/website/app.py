@@ -4,6 +4,7 @@ import pickle
 from NLP_main import cv
 from NLP_functions import cleanData
 
+
 app = Flask(__name__)
 model = pickle.load(open('model.pkl', 'rb'))
 

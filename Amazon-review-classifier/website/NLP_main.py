@@ -5,14 +5,14 @@ import pandas as pd
 import pickle
 
 # Importing the df
-df_1 = pd.read_csv('Restaurant_Reviews.tsv', delimiter = '\t', quoting = 3)
-df_2 = pd.read_csv('reviews.tsv', delimiter = '\t', quoting = 3)
+df = pd.read_csv('Restaurant_Reviews.tsv', delimiter = '\t', quoting = 3)
+#df_2 = pd.read_csv('reviews.tsv', delimiter = '\t', quoting = 3)
 
 # #Reclassify the Amazon ratings into a binary classification
-recode_dict = { 1:0, 2:0, 3:1, 4:1, 5:1 }
-df_2['Ratings'] = df_2['Liked'].map(recode_dict)
-df_2.drop()
-df = pd.merge(df_1, df_2)
+# recode_dict = { 1:0, 2:0, 3:1, 4:1, 5:1 }
+# df_2['Ratings'] = df_2['Liked'].map(recode_dict)
+# df_2.drop()
+# df = pd.merge(df_1, df_2)
 
 #Clean the data
 from NLP_functions import cleanData
@@ -40,8 +40,8 @@ from NLP_functions import createKNN, createLogistic, createNaiveBayes,createRand
 # classifier = createKNN(X_train, y_train, 5, 'minkowski', 2)
 # classifier = createLogistic(X_train, y_train, 0)
 # classifier = createNaiveBayes(X_train, y_train)
-classifier = createRandomForest(X_train, y_train, 250)
-# classifier = createSVM(X_train, y_train, 'rbf', 0)
+# classifier = createRandomForest(X_train, y_train, 250)
+classifier = createSVM(X_train, y_train, 'rbf', 0)
 
 #Create model and send to pickle file
 from NLP_functions import createPickleModel
