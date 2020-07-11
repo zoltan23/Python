@@ -2,6 +2,9 @@ import pandas as pd
 import state_abbreviations
 import re
 import os
+import requests
+import json
+from pandas.io.json import json_normalize
 
 dir = os.getcwd() + '/Data Sets/'
 
@@ -47,4 +50,15 @@ def createMasterDataset():
     print(master_df)
 
 #createMasterDataset()
+
+def queryAPI(url):
+    response = requests.get(url)
+    data = response.json()
+    df = pd.DataFrame.from_dict(data)
+    df.to_csv('college.csv')
+   
+   
+
+
+queryAPI('https://api.collegefootballdata.com/recruiting/players?year=2019&classification=HighSchool')
 
